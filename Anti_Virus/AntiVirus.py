@@ -1,7 +1,29 @@
 import os
 import requests
 from hashlib import sha256
-import math
+from tkinter import *
+
+win = Tk()
+win.geometry("850x850")
+win.title("Anti Virus")
+win.config(background='#0c1345')
+win.iconphoto(True,PhotoImage(file='Anti_Virus/Icon.png'))
+title = Label(win, text = 'Anti Virus By Ori Cohen', font = ('Arial',25), bg = '#0c1345',fg = 'white')
+title.pack()
+
+text = Label(win,text='API Key Here: ',font=('Arial',20), bg = '#0c1345',fg = 'white')
+text.place(x=50,y=100)
+
+input = Entry(win,font=('Arial',15),width=int(850 * 0.6 / 10))
+input.place(x=50,y=150)
+
+AIP = Button(win,text='Set AIP',font=('Arial',15),bg='#161625',fg = 'white')
+AIP.place(x=650,y=155)
+
+scan = Button(win,text='scan',font=('Arial',15),bg='#161625',fg = 'white')
+scan.place(x=375,y=200)
+
+
 
 def main():
     global path 
@@ -89,4 +111,5 @@ def main():
 
     folder_search(path)
 
+win.mainloop()
 main()
