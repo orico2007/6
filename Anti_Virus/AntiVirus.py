@@ -206,16 +206,16 @@ def Scan(path):
         fileName = fileName[0: fileName.find('/')][::-1]
         virusFrame = Frame(scrollbarLabel, width=800, height=200, bg='red')
         virusFrame.pack()
-        virus_name = Label(virusFrame, text=fileName, font=("Arial", 25), height=3)
+        virus_name = Label(virusFrame, text=fileName, font=("Arial", 15), height=3)
         virus_name.pack(side=LEFT)
         #margin
-        virusMargin = Label(virusFrame, text="", width=15)
+        virusMargin = Label(virusFrame, text="", width=5)
         virusMargin.pack(side=LEFT)
         #Malicious/suspiucous
-        returnedData = Label(virusFrame, text=f"Malicious: {data[1][0]}", font=("Arial", 25))
+        returnedData = Label(virusFrame, text=f"Malicious: {data[1][0]}", font=("Arial", 15))
         returnedData.pack(side=LEFT)
         #marg-btn
-        buttonMargin = Label(virusFrame, text="", width=10)
+        buttonMargin = Label(virusFrame, text="", width=5)
         buttonMargin.pack(side=LEFT)
         #delete
         deleteVirus = Button(virusFrame, text="Delete", font=("Arial", 23) ,command=lambda: deleteFile(data[0], virusFrame))
