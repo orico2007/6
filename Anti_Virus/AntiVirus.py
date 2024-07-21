@@ -71,7 +71,7 @@ def Load():
     def validateUser():
         keySet()
         Error_counter = 0
-        #checking if the input is good:
+
         Error_counter += apiCheck()
         Error_counter += pathCheck()
         if (len(keyEntry.get()) == 0):
@@ -79,15 +79,13 @@ def Load():
 
         if Error_counter == 0:
             Scan(pathEntry.get())
-
-    #i am dividing the window to 2 main frames, top and bottom        
+     
     topFrame = Frame(win, width=width, height=450)
     topFrame.pack()
-    
-    #marg from side
+
     spaceFrame = Label(topFrame, text="",width=50)
     spaceFrame.pack(side=LEFT)
-    #frame1
+    
     frameLeft = Frame(topFrame, width=900, height=450)
     frameLeft.pack(side=LEFT, anchor=NW)
     frameLeftUp = Frame(frameLeft, width=900, height=200)
@@ -97,31 +95,27 @@ def Load():
     frameLeftDown = Frame(frameLeft, width=900, height=50)
     frameLeftDown.pack(anchor=W)
     
-    #frame1_1
-    #margin
     pathMargin = Label(frameLeftUp, text="", height=1)
     pathMargin.pack()
-    #path label
+
     pathLabel = Label(frameLeftUp, text="Path for scan", font=('Arial', 20), fg='White')
     pathLabel.pack(side=TOP, anchor=NW)
-    #path type
+
     pathEntry = Entry(frameLeftUp, font=("Arial", 23),width= 40)
     pathEntry.pack(side=LEFT)
-    #btn margin
+
     pathBottonMargin = Label(frameLeftUp, text="", width=1)
     pathBottonMargin.pack(side=LEFT)
-    #path select
+
     pathBrowse = Button(frameLeftUp,text="Browse", font=("Arial", 15),width= 7,height=1,command=browseFile)
     pathBrowse.pack(side=LEFT)
 
     keysMargin = Label(frameLeftUp, text="", width=1)
     keysMargin.pack(side=LEFT)
-    ##clear path
+
     clearPathButton = Button(frameLeftUp, text="Clear", font=("Arial", 15), width= 7,height=1 ,command=pathClear)
     clearPathButton.pack(side=LEFT)
     
-    #frame1_2
-    #marg
     marg_down = Label(frameLeftCenter, text="",height=5)
     marg_down.pack()
     keyLabel = Label(frameLeftCenter, text="API Key here", font=('Arial', 20), fg='White')
@@ -130,32 +124,32 @@ def Load():
     keyEntry.pack(side=LEFT)
     keyMargin = Label(frameLeftCenter, text="", width=1)
     keyMargin.pack(side=LEFT)
-    #set api
+
     keyButton = Button(frameLeftCenter, text="Set Key", font=("Arial", 15), width= 7,height=1 ,command=keySet)
     keyButton.pack(side=LEFT)
     keysMargin1 = Label(frameLeftCenter, text="", width=1)
     keysMargin1.pack(side=LEFT)
-    #clear api
+
     clearKeyButton = Button(frameLeftCenter, text="Clear", font=("Arial", 15), width= 7,height=1 ,command=keyClear)
     clearKeyButton.pack(side=LEFT)
    
 
-    #frame2
+
     imgFrame = Frame(topFrame, width=650, height=450,bg='red')
     imgFrame.pack(side=LEFT, anchor=NW)
-    #image
+
     global big_image
     big_image = PhotoImage(file = "Anti_Virus/Icon.png")
     canvas = Canvas(imgFrame,width = 400, height = 350)
     canvas.create_image(200, 200, image = big_image)
     canvas.pack(side=RIGHT, anchor=N)
-    #margin - top
+
     scan_marg_top = Label(frameLeftDown, text="", height=2)
     scan_marg_top.pack()
-    #margin - left
+
     scanMarginLeft = Label(frameLeftDown, text="", width=59)
     scanMarginLeft.pack(side=LEFT)
-    #scan btn
+
     scanButton = Button(frameLeftDown, text="Scan", font=("Arial", 23) ,command=validateUser)
     scanButton.pack()
 
@@ -211,13 +205,13 @@ def Scan(path):
         #margin
         virusMargin = Label(virusFrame, text="", width=5)
         virusMargin.pack(side=LEFT)
-        #Malicious/suspiucous
+
         returnedData = Label(virusFrame, text=f"Malicious: {data[1][0]}", font=("Arial", 15))
         returnedData.pack(side=LEFT)
-        #marg-btn
+        
         buttonMargin = Label(virusFrame, text="", width=5)
         buttonMargin.pack(side=LEFT)
-        #delete
+        
         deleteVirus = Button(virusFrame, text="Delete", font=("Arial", 23) ,command=lambda: deleteFile(data[0], virusFrame))
         deleteVirus.pack(side=LEFT)
         win.update()
