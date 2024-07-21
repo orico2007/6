@@ -1,13 +1,13 @@
 import os
 import requests
-from hashlib import sha256
-import tkinter as tk
 from tkinter import *
 from tkinter import filedialog
-from PIL import ImageTk, Image
+from hashlib import sha256
+import tkinter as tk
 from tkinter import ttk
 import ttkbootstrap as tb
 from ttkbootstrap.scrolled import ScrolledFrame
+from PIL import ImageTk, Image
 
 #Window Setup
 win = tk.Tk()
@@ -79,83 +79,121 @@ def Load():
 
         if Error_counter == 0:
             Scan(pathEntry.get())
-     
-    topFrame = Frame(win, width=width, height=450)
-    topFrame.pack()
+            
+    def start():
+        stratButtonMargin.pack_forget()
+        startButton.pack_forget()
+        topFrame.pack()
+        spaceFrame.pack(side=LEFT)
+        frameLeft.pack(side=LEFT, anchor=NW)
+        frameLeftUp.pack(anchor=W)
+        frameLeftCenter.pack(anchor=W)
+        frameLeftDown.pack(anchor=W)
+        pathLabel.pack(side=TOP, anchor=NW)
+        pathEntry.pack(side=LEFT)
+        pathBottonMargin.pack(side=LEFT)
+        pathBrowse.pack(side=LEFT)
+        keysMargin.pack(side=LEFT)
+        clearPathButton.pack(side=LEFT)
+        middleMargin.pack()
+        keyLabel.pack(side=TOP, anchor=NW)
+        keyEntry.pack(side=LEFT)
+        keyMargin.pack(side=LEFT)
+        keyButton.pack(side=LEFT)
+        keysMargin1.pack(side=LEFT)
+        clearKeyButton.pack(side=LEFT)
+        imgFrame.pack(side=LEFT, anchor=NW)
+        canvas.pack(side=RIGHT, anchor=N)
+        scanMarginTop.pack()
+        scanMarginLeft.pack(side=LEFT)
+        scanButton.pack()
+        frameDown.pack()
+        proggressbarLabel.pack_forget()
+        proggressbar.pack_forget()
+        proggressbarMargin.pack()
+        scrollbarLabel.pack_forget()
 
-    spaceFrame = Label(topFrame, text="",width=50)
-    spaceFrame.pack(side=LEFT)
+    stratButtonMargin = Label(win, text="", height=25)
+    stratButtonMargin.pack(side=TOP)
+    startButton = Button(win,text="Start!", font=("Arial", 23),width= 7,height=1,command=start)
+    startButton.pack(anchor='center',side=TOP)
+    
+    topFrame = Frame(win, width=width, height=450)
+    topFrame.pack_forget()
+
+    spaceFrame = Label(topFrame, text="",width=20)
+    spaceFrame.pack_forget()
     
     frameLeft = Frame(topFrame, width=900, height=450)
-    frameLeft.pack(side=LEFT, anchor=NW)
+    frameLeft.pack_forget()
     frameLeftUp = Frame(frameLeft, width=900, height=200)
-    frameLeftUp.pack(anchor=W)
+    frameLeftUp.pack_forget()
     frameLeftCenter = Frame(frameLeft, width=900, height=200)
-    frameLeftCenter.pack(anchor=W)
+    frameLeftCenter.pack_forget()
     frameLeftDown = Frame(frameLeft, width=900, height=50)
-    frameLeftDown.pack(anchor=W)
+    frameLeftDown.pack_forget()
     
     pathMargin = Label(frameLeftUp, text="", height=1)
-    pathMargin.pack()
+    pathMargin.pack_forget()
 
     pathLabel = Label(frameLeftUp, text="Path for scan", font=('Arial', 20), fg='White')
-    pathLabel.pack(side=TOP, anchor=NW)
+    pathLabel.pack_forget()
 
-    pathEntry = Entry(frameLeftUp, font=("Arial", 23),width= 40)
-    pathEntry.pack(side=LEFT)
+    pathEntry = Entry(frameLeftUp, font=("Arial", 23),width= 70)
+    pathEntry.pack_forget()
 
     pathBottonMargin = Label(frameLeftUp, text="", width=1)
-    pathBottonMargin.pack(side=LEFT)
+    pathBottonMargin.pack_forget()
 
     pathBrowse = Button(frameLeftUp,text="Browse", font=("Arial", 15),width= 7,height=1,command=browseFile)
-    pathBrowse.pack(side=LEFT)
+    pathBrowse.pack_forget()
 
     keysMargin = Label(frameLeftUp, text="", width=1)
-    keysMargin.pack(side=LEFT)
+    keysMargin.pack_forget()
 
     clearPathButton = Button(frameLeftUp, text="Clear", font=("Arial", 15), width= 7,height=1 ,command=pathClear)
-    clearPathButton.pack(side=LEFT)
+    clearPathButton.pack_forget()
     
-    marg_down = Label(frameLeftCenter, text="",height=5)
-    marg_down.pack()
+    middleMargin = Label(frameLeftCenter, text="",height=5)
+    middleMargin.pack_forget()
+    
     keyLabel = Label(frameLeftCenter, text="API Key here", font=('Arial', 20), fg='White')
-    keyLabel.pack(side=TOP, anchor=NW)
-    keyEntry = Entry(frameLeftCenter, font=("Arial", 23),width= 40)
-    keyEntry.pack(side=LEFT)
+    keyLabel.pack_forget()
+    keyEntry = Entry(frameLeftCenter, font=("Arial", 23),width= 70)
+    keyEntry.pack_forget()
     keyMargin = Label(frameLeftCenter, text="", width=1)
-    keyMargin.pack(side=LEFT)
+    keyMargin.pack_forget()
 
     keyButton = Button(frameLeftCenter, text="Set Key", font=("Arial", 15), width= 7,height=1 ,command=keySet)
-    keyButton.pack(side=LEFT)
+    keyButton.pack_forget()
     keysMargin1 = Label(frameLeftCenter, text="", width=1)
-    keysMargin1.pack(side=LEFT)
+    keysMargin1.pack_forget()
 
     clearKeyButton = Button(frameLeftCenter, text="Clear", font=("Arial", 15), width= 7,height=1 ,command=keyClear)
-    clearKeyButton.pack(side=LEFT)
+    clearKeyButton.pack_forget()
    
 
 
     imgFrame = Frame(topFrame, width=650, height=450,bg='red')
-    imgFrame.pack(side=LEFT, anchor=NW)
+    imgFrame.pack_forget()
 
     global big_image
     big_image = PhotoImage(file = "Anti_Virus/Icon.png")
     canvas = Canvas(imgFrame,width = 400, height = 350)
     canvas.create_image(200, 200, image = big_image)
-    canvas.pack(side=RIGHT, anchor=N)
+    canvas.pack_forget()
 
-    scan_marg_top = Label(frameLeftDown, text="", height=2)
-    scan_marg_top.pack()
+    scanMarginTop = Label(frameLeftDown, text="", height=2)
+    scanMarginTop.pack_forget()
 
-    scanMarginLeft = Label(frameLeftDown, text="", width=59)
-    scanMarginLeft.pack(side=LEFT)
+    scanMarginLeft = Label(frameLeftDown, text="", width=100)
+    scanMarginLeft.pack_forget()
 
     scanButton = Button(frameLeftDown, text="Scan", font=("Arial", 23) ,command=validateUser)
-    scanButton.pack()
-
+    scanButton.pack_forget()
     
     frameDown = Frame(win, width=width, height=500)
-    frameDown.pack()
+    frameDown.pack_forget()
     
     global proggressbarLabel
     global scanText
@@ -168,7 +206,7 @@ def Load():
 
     #margin
     proggressbarMargin = Label(frameDown, text="", height=4)
-    proggressbarMargin.pack()
+    proggressbarMargin.pack_forget()
     
     # display viruses
     global scrollbarLabel
